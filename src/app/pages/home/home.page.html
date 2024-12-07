@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Aves de Guatemala</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="recordings.length === 0" class="loading">
+    Cargando información...
+  </div>
+
+  <ion-list *ngIf="recordings.length > 0">
+    <ion-item *ngFor="let recording of recordings" class="bird-item">
+      <div class="bird-container">
+        <img
+          class="bird-image"
+          [src]="getThumbnailUrl(recording)"
+          alt="No disponible"
+        />
+        <div class="bird-info">
+          <h2>Familia: {{ recording?.gen }}</h2>
+          <p>Nombre: {{ recording?.en }}</p>
+          <p>Ubicación: {{ recording?.loc }}</p>
+          <p>Descubridor: {{ recording?.rec }}</p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
